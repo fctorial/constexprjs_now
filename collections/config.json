@@ -2,14 +2,15 @@
   "name": "Your Name",
   "description": "Web Programmer from Somewhere",
   "avatar": "https://avatars.githubusercontent.com/u/58381615",
+  "url": "https://fctorial.com",
 
   "footer_links": {
-    "github": "fctorial",
+    "github": "fctorial/ConstexprJS",
     "twitter": "fctorial1",
     "email": "fctorial@gmail.com"
   },
 
-  "disqus": "my-website-p0h9lqp6x8",
+  "disqus_id": "",
 
   "nav_items": [
     {

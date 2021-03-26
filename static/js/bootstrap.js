@@ -75,13 +75,41 @@ async function render_base_page () {
   document.head.appendChild(make_element(`
     <link rel="stylesheet" href="/static/css/styles.css" />
   `))
+
   document.head.appendChild(
     make_element(
       `<meta name="viewport" content="width=device-width, min-width=800">`
     )
   )
+
+  if (cfg.disqus_id && window.location.pathname.startsWith('/posts')) {
+    wrapper.appendChild(make_element(`<div id="disqus_thread"></div>`));
+    function disqus_initialization (url, disqus_id) {
+      var disqus_config = function () {
+        // Replace PAGE_URL with your page's canonical URL variable
+        this.page.url = url;
+
+        // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = window.location.pathname;
+      };
+
+      (() => {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+        var d = document, s = d.createElement('script');
+        s.src = `https://${disqus_id}.disqus.com/embed.js`;
+        s.setAttribute('data-timestamp', +new Date());
+        d.head.appendChild(s);
+      })();
+    }
+    const di = document.createElement('script')
+    di.textContent = disqus_initialization.toString()
+    document.head.appendChild(di)
+
+    const dic = document.createElement('script')
+    dic.textContent = `disqus_initialization('${cfg.url}', '${cfg.disqus_id}')`
+    document.head.appendChild(dic)
+  }
 }
 
 window.onfocus = () => {
-  setTimeout(() => window.location.reload(), 150)
+  // setTimeout(() => window.location.reload(), 150)
 }
