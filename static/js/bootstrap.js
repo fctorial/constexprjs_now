@@ -19,6 +19,12 @@ async function stage1() {
   const tag = document.createElement('script')
 }
 
+async function sleep(n) {
+  return new Promise((res) => {
+    setTimeout(() => res(), n)
+  })
+}
+
 async function render_base_page () {
   await evalScript('/static/js/lib.js')
 
@@ -47,17 +53,8 @@ async function render_base_page () {
   wrapper.appendChild(hdr)
   wrapper.appendChild(article)
 
-  if (!document.querySelector('#main_title')) {
-    const posts = await fetch('/collections/posts.json').then(res => res.json())
-    const curr_post = posts.filter(post => post.url === window.location.pathname)[0]
-    if (curr_post) {
-      insertFirst(article, make_element(`<h1 id="main_title">${curr_post.title}</h1>`))
-    } else {
-      insertFirst(article, make_element(`<h1 id="main_title"></h1>`))
-    }
-  }
-
   const footer = make_element('<footer class=".footer"></footer>')
+
   const footer_linkers = {
     "email": (id) => `mailto:${id}`,
     "github": (id) => `https://github.com/${id}`,
@@ -71,6 +68,16 @@ async function render_base_page () {
 
   document.body.appendChild(wrapper)
   document.body.appendChild(footer)
+
+  if (!document.querySelector('#main_title')) {
+    const posts = await fetch('/collections/posts.json').then(res => res.json())
+    const curr_post = posts.filter(post => post.url === window.location.pathname)[0]
+    if (curr_post) {
+      insertFirst(article, make_element(`<h1 id="main_title">${curr_post.title}</h1>`))
+    } else {
+      insertFirst(article, make_element(`<h1 id="main_title"></h1>`))
+    }
+  }
 
   document.head.appendChild(make_element(`
     <link rel="stylesheet" href="/static/css/styles.css" />

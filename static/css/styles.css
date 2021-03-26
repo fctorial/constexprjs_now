@@ -240,6 +240,9 @@ img {
     width: 40%;
     margin: auto;
 }
+article {
+    padding: 1em;
+}
 
 header {
     width: 100%;
