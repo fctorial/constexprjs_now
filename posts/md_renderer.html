@@ -7,10 +7,13 @@
 <script constexpr src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script constexpr>
   const md_url = window.location.hash.substring(1)
-  render_base_page()
-    .then(() => Promise.all([fetch(md_url).then(res => res.text()), fetch('/collections/posts.json').then(res => res.json())]))
-    .then(([md_txt, posts]) => {
-      article.innerHTML = marked(md_txt)
+  fetch(md_url).then(res => res.text())
+    .then((md_txt) => {
+      document.querySelector('article').innerHTML = marked(md_txt)
+    })
+    .then(() => render_base_page())
+    .then(() => fetch('/collections/posts.json').then(res => res.json()))
+    .then((posts) => {
       const curr_post = posts.filter(p => p.markdown_url === md_url)[0]
       if (curr_post) {
         document.querySelector('#main_title').textContent = curr_post.title

@@ -5,7 +5,11 @@ function make_element (str) {
 }
 
 function insertFirst(par, ch) {
-  par.insertBefore(ch, par.children[0])
+  if (par.children[0]) {
+    par.insertBefore(ch, par.children[0])
+  } else {
+    par.appendChild(ch)
+  }
 }
 function insertBefore(sib, el) {
   sib.parentNode.insertBefore(el, sib.parentNode.firstChild)

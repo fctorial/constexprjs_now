@@ -47,12 +47,14 @@ async function render_base_page () {
   wrapper.appendChild(hdr)
   wrapper.appendChild(article)
 
-  const posts = await fetch('/collections/posts.json').then(res => res.json())
-  const curr_post = posts.filter(post => post.url === window.location.pathname)[0]
-  if (curr_post) {
-    insertFirst(article, make_element(`<h1 id="main_title">${curr_post.title}</h1>`))
-  } else {
-    insertFirst(article, make_element(`<h1 id="main_title"></h1>`))
+  if (!document.querySelector('#main_title')) {
+    const posts = await fetch('/collections/posts.json').then(res => res.json())
+    const curr_post = posts.filter(post => post.url === window.location.pathname)[0]
+    if (curr_post) {
+      insertFirst(article, make_element(`<h1 id="main_title">${curr_post.title}</h1>`))
+    } else {
+      insertFirst(article, make_element(`<h1 id="main_title"></h1>`))
+    }
   }
 
   const footer = make_element('<footer class=".footer"></footer>')
