@@ -69,13 +69,6 @@ body {
     color: #333;
 }
 
-.container {
-    margin: 0 auto;
-    max-width: 740px;
-    padding: 0 10px;
-    width: 100%;
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #222;
@@ -159,15 +152,6 @@ img {
     max-width: 100%;
 }
 
-.gmnoprint img {
-    max-width: none;
-}
-
-.date {
-    font-style: italic;
-    color: #666;
-}
-
 ::-moz-selection {
     color: #000;
     background: #eee;
@@ -191,144 +175,6 @@ img {
 /*********************/
 /* LAYOUT / SECTIONS */
 /*********************/
-.wrapper-masthead {
-    margin-bottom: 50px;
-}
-
-.masthead {
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
-
-@media screen and (max-width: 640px) {
-    .masthead {
-        text-align: center;
-    }
-}
-
-.site-avatar {
-    float: left;
-    width: 70px;
-    height: 70px;
-    margin-right: 15px;
-}
-
-@media screen and (max-width: 640px) {
-    .site-avatar {
-        float: none;
-        display: block;
-        margin: 0 auto;
-    }
-}
-
-.site-avatar img {
-    border-radius: 5px;
-}
-
-.site-info {
-    float: left;
-}
-
-@media screen and (max-width: 640px) {
-    .site-info {
-        float: none;
-        display: block;
-        margin: 0 auto;
-    }
-}
-
-.site-name {
-    margin: 0;
-    color: #333;
-    cursor: pointer;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    font-size: 28px;
-    letter-spacing: 1px;
-}
-
-.site-description {
-    margin: -5px 0 0 0;
-    color: #666;
-    font-size: 16px;
-}
-
-@media screen and (max-width: 640px) {
-    .site-description {
-        margin: 3px 0;
-    }
-}
-
-nav {
-    float: right;
-    margin-top: 23px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 18px;
-}
-
-@media screen and (max-width: 640px) {
-    nav {
-        float: none;
-        margin-top: 9px;
-        display: block;
-        font-size: 16px;
-    }
-}
-
-nav a {
-    margin-left: 20px;
-    color: #333;
-    text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-@media screen and (max-width: 640px) {
-    nav a {
-        margin: 0 10px;
-        color: #4183C4;
-    }
-}
-
-.posts > .post {
-    padding-bottom: 2em;
-    border-bottom: 1px solid #eee;
-}
-
-.posts > .post:last-child {
-    padding-bottom: 1em;
-    border-bottom: none;
-}
-
-.post blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid #666;
-    padding: 0.1em 1em;
-    color: #666;
-    font-size: 22px;
-    font-style: italic;
-}
-
-.post .comments {
-    margin-top: 10px;
-}
-
-.post .read-more {
-    text-transform: uppercase;
-    font-size: 15px;
-}
-
-.wrapper-footer {
-    margin-top: 50px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    background-color: #eee;
-}
-
-footer {
-    padding: 20px 0;
-    text-align: center;
-}
 
 .svg-icon {
     width: 40px;
@@ -390,7 +236,7 @@ footer {
 
 /*# sourceMappingURL=styles.css.map */
 
-article {
+.body_wrapper {
     width: 40%;
     margin: auto;
 }
@@ -440,7 +286,7 @@ header nav {
 }
 
 @media screen and (max-width: 640px) {
-    article {
+    .body_wrapper {
         width: 100%;
     }
     header {
@@ -452,4 +298,56 @@ header nav {
     header .info .info_text {
         align-items: center;
     }
+}
+
+nav {
+    margin-top: 23px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 640px) {
+    nav {
+        float: none;
+        margin-top: 9px;
+        display: block;
+        font-size: 16px;
+    }
+}
+
+nav a {
+    margin-left: 20px;
+    color: #333;
+    text-align: right;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 640px) {
+    nav a {
+        margin: 0 10px;
+        color: #4183C4;
+    }
+}
+
+article blockquote {
+    margin: 1.8em .8em;
+    border-left: 2px solid #666;
+    padding: 0.1em 1em;
+    color: #666;
+    font-size: 22px;
+    font-style: italic;
+}
+
+footer {
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background-color: #eee;
+}
+
+footer > a {
+    margin: 0 5px;
 }
