@@ -93,14 +93,12 @@ async function render_base_page () {
     wrapper.appendChild(make_element(`<div id="disqus_thread"></div>`));
     function disqus_initialization (url, disqus_id) {
       var disqus_config = function () {
-        // Replace PAGE_URL with your page's canonical URL variable
         this.page.url = url;
 
-        // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         this.page.identifier = window.location.pathname;
       };
 
-      (() => {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+      (() => {
         var d = document, s = d.createElement('script');
         s.src = `https://${disqus_id}.disqus.com/embed.js`;
         s.setAttribute('data-timestamp', +new Date());
@@ -118,5 +116,5 @@ async function render_base_page () {
 }
 
 window.onfocus = () => {
-  // setTimeout(() => window.location.reload(), 150)
+  setTimeout(() => window.location.reload(), 150)
 }
