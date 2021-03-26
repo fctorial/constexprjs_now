@@ -1,4 +1,4 @@
-Next you can update your site name, avatar and other options using the `/collections/config.json file.`
+Next you can update your site name, avatar and other options using the `/collections/config.json` file.
 
 ## Adding New Posts
 
