@@ -58,14 +58,14 @@ async function render_base_page () {
   }
 
   const footer = make_element('<footer class=".footer"></footer>')
-  const footer_items = [
-    "email",
-    "github",
-    "twitter"
-  ]
-  footer_items.forEach(item => {
+  const footer_linkers = {
+    "email": (id) => `mailto:${id}`,
+    "github": (id) => `https://github.com/${id}`,
+    "twitter": (id) => `https://twitter.com/${id}`
+  }
+  Object.keys(footer_linkers).forEach(item => {
     if (cfg.footer_links[item]) {
-      footer.appendChild(make_element(`<a href="${cfg.footer_links[item]}"><i class="svg-icon ${item}"></i></a>`))
+      footer.appendChild(make_element(`<a target="_blank" href="${footer_linkers[item](cfg.footer_links[item])}"><i class="svg-icon ${item}"></i></a>`))
     }
   })
 
