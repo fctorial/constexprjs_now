@@ -236,11 +236,13 @@ img {
 
 /*# sourceMappingURL=styles.css.map */
 
+body {
+    overflow: scroll;
+}
+
 .body_wrapper {
     width: 40%;
     margin: auto;
-}
-article {
     padding: 1em;
 }
 
@@ -268,7 +270,7 @@ header .info img {
     width: 5em;
     height: 5em;
     object-fit: contain;
-    border-radius: 0.5em;
+    border-radius: 5px;
 }
 
 header .info .info_text {
