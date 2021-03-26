@@ -1,6 +1,12 @@
 [
   {
-    "title": "Ready To Go",
-    "url": "/posts/ready_to_go.html"
+    "title": "You're up and running",
+    "description": "Next you can update your site name, avatar and other options using the /collections/config.json file in your repository.",
+    "url": "/posts/up_and_running.html",
+    "markdown_url": "/posts/up_and_running.md"
+  },
+  {
+    "title": "User interface as an API for humans",
+    "url": "/posts/ui_api.html"
   }
 ]

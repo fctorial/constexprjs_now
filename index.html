@@ -1,8 +1,37 @@
 <html>
 <body>
 <article>
-    <h1>You're up and running!</h1>
 </article>
 </body>
 <script constexpr src="/static/js/bootstrap.js"></script>
+<script constexpr>
+  render_base_page()
+    .then(async () => {
+      const posts = await (fetch('/collections/posts.json').then(res => res.json()))
+      posts.forEach(post => {
+        const generator_url = post.markdown_url ? `/posts/md_renderer.html#${post.markdown_url}` : post.url
+        article.appendChild(make_element(`
+<div class="post">
+    <a href="${generator_url}"><h1>${post.title}</h1></a>
+    <p>${post.description || ''}</p>
+    <a class="read_more" href="${post.url}">READ MORE</a>
+</div>
+`))
+        window._ConstexprJS_.addPaths([{
+          generator: generator_url,
+          output: post.url
+        }])
+      })
+    })
+    .then(() => window._ConstexprJS_.compile())
+</script>
+<style>
+    h1:hover {
+        color: #4183C4;
+    }
+
+    .read_more {
+        font-size: 0.8em;
+    }
+</style>
 </html>

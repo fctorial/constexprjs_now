@@ -2,7 +2,7 @@ if (!window._ConstexprJS_) {
   window._ConstexprJS_ = {
     compile: () => {},
     abort: () => {},
-    addPath: () => {},
+    addPaths: () => {},
     addExclusions: () => {},
     log: () => {}
   }
@@ -19,7 +19,7 @@ async function stage1() {
   const tag = document.createElement('script')
 }
 
-(async () => {
+async function render_base_page () {
   await evalScript('/static/js/lib.js')
 
   const cfg = await (await fetch('/collections/config.json')).json()
@@ -42,10 +42,18 @@ async function stage1() {
 
   hdr.appendChild(nav)
 
-  const article = document.querySelector('article')
+  window.article = document.querySelector('article')
   const wrapper = make_element('<div class="body_wrapper"></div>')
   wrapper.appendChild(hdr)
   wrapper.appendChild(article)
+
+  const posts = await fetch('/collections/posts.json').then(res => res.json())
+  const curr_post = posts.filter(post => post.url === window.location.pathname)[0]
+  if (curr_post) {
+    insertFirst(article, make_element(`<h1 id="main_title">${curr_post.title}</h1>`))
+  } else {
+    insertFirst(article, make_element(`<h1 id="main_title"></h1>`))
+  }
 
   const footer = make_element('<footer class=".footer"></footer>')
   const footer_items = [
@@ -70,7 +78,7 @@ async function stage1() {
       `<meta name="viewport" content="width=device-width, min-width=800">`
     )
   )
-})()
+}
 
 window.onfocus = () => {
   setTimeout(() => window.location.reload(), 150)
